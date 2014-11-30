@@ -31,24 +31,24 @@ void Przyklady()
 				*wsk_int2;
 	double		*wsk_double;
 
-	//wsk_int1 = wsk_int2; // to oznacza: teraz wskaŸnik wsk_int1 pokazuje na to samo co wsk_int2
+	//wsk_int1 = wsk_int2; // to oznacza: teraz wskaï¿½nik wsk_int1 pokazuje na to samo co wsk_int2
 	
-	//wsk_double = reinterpret_cast<double *>(wsk_int1); // rzutowanie wskaŸnika typu int na typ double i przypisanie tej wartoœci do wskaŸnika typu double
-	// reinterpret_cast zosta³ wymyœlony dla wskaŸników, operator ten pozwala na konwersjê jednego typu wskaŸnika na inny typ wskaŸnika
+	//wsk_double = reinterpret_cast<double *>(wsk_int1); // rzutowanie wskaï¿½nika typu int na typ double i przypisanie tej wartoï¿½ci do wskaï¿½nika typu double
+	// reinterpret_cast zostaï¿½ wymyï¿½lony dla wskaï¿½nikï¿½w, operator ten pozwala na konwersjï¿½ jednego typu wskaï¿½nika na inny typ wskaï¿½nika
 	
-	// reinterpret_cast dodatkowo pozwala na konwersjê miêdzy wskaŸnikiem, a typem ca³kowitym (i odwrotnie).
+	// reinterpret_cast dodatkowo pozwala na konwersjï¿½ miï¿½dzy wskaï¿½nikiem, a typem caï¿½kowitym (i odwrotnie).
 	int *wsk_sygnalu;
 	int numeryczny_adres = 0x0f6a2f1;
 	//int schowek;
 
-	// ustawienie wskaŸnika przez za³adowanie do niego adresu bêd¹cego liczb¹ ca³kowit¹
+	// ustawienie wskaï¿½nika przez zaï¿½adowanie do niego adresu bï¿½dï¿½cego liczbï¿½ caï¿½kowitï¿½
 	wsk_sygnalu = reinterpret_cast<int*>(numeryczny_adres);
-	// odczytanie adresu przechowywanego we wskaŸniku
+	// odczytanie adresu przechowywanego we wskaï¿½niku
 	cout << "Wskaznik pokazuje na komorke pamieci numer: "
-		 << reinterpret_cast<int>(wsk_sygnalu)
+		 << reinterpret_cast<int*>(wsk_sygnalu)
 		 << endl;
 
-	// ----------- WskaŸnik typu void -----------
+	// ----------- Wskaï¿½nik typu void -----------
 	/*void *wv;
 
 	char *wc;
@@ -60,29 +60,29 @@ void Przyklady()
 	wv = wi;
 
 	void *wv_drugi;
-	wv_drugi = wv;*/ // mo¿na przypisaæ wskaŸnik typu void do innego wskaŸnika typu void
+	wv_drugi = wv;*/ // moï¿½na przypisaï¿½ wskaï¿½nik typu void do innego wskaï¿½nika typu void
 
-	// do wskaŸnika typu void nie mo¿na przypisaæ treœci obiektu z przydomkiem const
+	// do wskaï¿½nika typu void nie moï¿½na przypisaï¿½ treï¿½ci obiektu z przydomkiem const
 
 	/*
-	 WskaŸnik ka¿dego (niesta³ego) typu mo¿na przypisaæ wskaŸnikowi typu void
-	 ---- wskaŸnik void <------ dowolny wskaŸnik (non-const);
-	 (do wskaŸnika void* nie mo¿na przypisaæ ¿adnego wskaŸnika do funkcji ani wskaŸnika do sk³adnika klasy)
+	 Wskaï¿½nik kaï¿½dego (niestaï¿½ego) typu moï¿½na przypisaï¿½ wskaï¿½nikowi typu void
+	 ---- wskaï¿½nik void <------ dowolny wskaï¿½nik (non-const);
+	 (do wskaï¿½nika void* nie moï¿½na przypisaï¿½ ï¿½adnego wskaï¿½nika do funkcji ani wskaï¿½nika do skï¿½adnika klasy)
 
-	 Natomiast nie da siê odwrotnie.
-	 WskaŸnika typu void nie mo¿na przypisaæ wskaŸnikowi "prawdziwiemu". Trzeba siê pos³u¿yæ operatorem rzutowania.
-	 dowolny wskaŸnik <------ rzutowanie ----- wskaŸnik void
+	 Natomiast nie da siï¿½ odwrotnie.
+	 Wskaï¿½nika typu void nie moï¿½na przypisaï¿½ wskaï¿½nikowi "prawdziwiemu". Trzeba siï¿½ posï¿½uï¿½yï¿½ operatorem rzutowania.
+	 dowolny wskaï¿½nik <------ rzutowanie ----- wskaï¿½nik void
 
-	 Wiedzê o typie obiektu pokazywanego mo¿na ewentualnie niezauwa¿enie zapomnieæ. Nabyæ tej wiedzy niezauwa¿enie nie mo¿na.
-	 Trzeba to œwiadomie wyspecyfikowaæ operacj¹ rzutowania.
+	 Wiedzï¿½ o typie obiektu pokazywanego moï¿½na ewentualnie niezauwaï¿½enie zapomnieï¿½. Nabyï¿½ tej wiedzy niezauwaï¿½enie nie moï¿½na.
+	 Trzeba to ï¿½wiadomie wyspecyfikowaï¿½ operacjï¿½ rzutowania.
 
 
-	 ---- Cztery domeny zastosowania wskaŸników ----
+	 ---- Cztery domeny zastosowania wskaï¿½nikï¿½w ----
 	
 	 - ulepszenie pracy z tablicami
-	 - funkcje mog¹ce zmieniaæ wartoœæ przesy³anych do nich argumentów
-	 - dostêp do specjalnych komórek pamiêci
-	 - rezerwacjê obszarów pamiêci
+	 - funkcje mogï¿½ce zmieniaï¿½ wartoï¿½ï¿½ przesyï¿½anych do nich argumentï¿½w
+	 - dostï¿½p do specjalnych komï¿½rek pamiï¿½ci
+	 - rezerwacjï¿½ obszarï¿½w pamiï¿½ci
 	*/
 
 	// Definicje:
@@ -91,29 +91,29 @@ void Przyklady()
 	int tablica[10];
 
 	// instrukcja:
-	wskaznik = &tablica[n];		// ustawienie wskaŸnika na n-ty element tablicy (pobranie adresu n-tego elementu)
+	wskaznik = &tablica[n];		// ustawienie wskaï¿½nika na n-ty element tablicy (pobranie adresu n-tego elementu)
 
 	// wskaznik = &tablica[0]; jest tym samym co: wskaznik = tablica;
 
-	// Jeœli wskaznik jest ustawiony tak:
+	// Jeï¿½li wskaznik jest ustawiony tak:
 	wskaznik = &tablica[4];
-	// to aby go przesun¹æ na nastepny element tablicy wystarczy:
+	// to aby go przesunï¿½ï¿½ na nastepny element tablicy wystarczy:
 	//wskaznik = wskaznik + 1;
 	// lub:
 	wskaznik++;
-	// aby go przesun¹æ o n elementów
+	// aby go przesunï¿½ï¿½ o n elementï¿½w
 	wskaznik += n;
 
-	// Dodanie do wskaŸnika jakiejœ liczby ca³kowitej powoduje, ¿e pokazuje on tyle¿ elementów tablicy dalej. Niezale¿nie od tego, jakie (typ) s¹ te elementy.
-	// Poniewa¿ wskaŸnik ze swojej definicji (czy jest typu int, double, itd.) bêdzie wiedzia³, jakiego rozmiaru s¹ elementy i w jaki sposób ma siê przesun¹æ.
+	// Dodanie do wskaï¿½nika jakiejï¿½ liczby caï¿½kowitej powoduje, ï¿½e pokazuje on tyleï¿½ elementï¿½w tablicy dalej. Niezaleï¿½nie od tego, jakie (typ) sï¿½ te elementy.
+	// Poniewaï¿½ wskaï¿½nik ze swojej definicji (czy jest typu int, double, itd.) bï¿½dzie wiedziaï¿½, jakiego rozmiaru sï¿½ elementy i w jaki sposï¿½b ma siï¿½ przesunï¿½ï¿½.
 }
 //******************************************************************************************************
 void Przyklad_przesuwanie_wskaznikow()
 {
-	// definicje dwóch tablic: int i double
+	// definicje dwï¿½ch tablic: int i double
 	int ti[6];
 	double td[6];
-	// dwa wskaŸniki do pokazywania na typ int i double
+	// dwa wskaï¿½niki do pokazywania na typ int i double
 	int *wi;
 	double *wd;
 
@@ -127,14 +127,14 @@ void Przyklad_przesuwanie_wskaznikow()
 	{
 		cout << "i = " << i
 			 << ", wi = "
-			 << reinterpret_cast<unsigned int>(wi)
+			 << wi
 			 << ", wd = "
-			 << reinterpret_cast<unsigned int>(wd)
+			 << wd
 			 << endl;
 	}
-	// WskaŸnik to nie tylko adres jakiegoœ miejsca w pamiêci. To tak¿e wiedza o tym, na jaki typ obiektu pokazuje. Wiedza ta wykorzystywana jest przy:
-	// a) interpretowaniu tego, na co wskaŸnik pokazuje
-	// b) ewentualnym poruszaniu wskaŸnika
+	// Wskaï¿½nik to nie tylko adres jakiegoï¿½ miejsca w pamiï¿½ci. To takï¿½e wiedza o tym, na jaki typ obiektu pokazuje. Wiedza ta wykorzystywana jest przy:
+	// a) interpretowaniu tego, na co wskaï¿½nik pokazuje
+	// b) ewentualnym poruszaniu wskaï¿½nika
 
 }
 

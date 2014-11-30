@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 #include <new>
+#include <stdio.h>
+#include <string.h>
 
 void XLVIII();
 
@@ -21,7 +23,7 @@ void XLVIII()
 	char x[11] = "0123456789";
 	char y[20];
 
-	strcpy_s(y, x);
+	strcpy(y, x);
 
 	cout << y << endl;
 
@@ -31,13 +33,13 @@ void XLVIII()
 	{
 		(linijka[i]) = new char[80];
 	}
-	// wygl¹da na to, ¿e wskaŸnik przesuwa siê ci¹gle dalej, nie wiem jak go spowrotem ustawiæ na pozycji 0
+	// wyglï¿½da na to, ï¿½e wskaï¿½nik przesuwa siï¿½ ciï¿½gle dalej, nie wiem jak go spowrotem ustawiï¿½ na pozycji 0
 	for(int i = 0; i < 10; i++)
 	{
 		//strcpy_s(linijka[i], 80, "to jest linijka nr ");
 		//strcat_s(linijka[i], 1, );
 		//strcat_s(linijka[i], x);
-		sprintf_s(linijka[i], 80,  "to jest linijka nr %d", i);
+		snprintf(linijka[i], 80,  "to jest linijka nr %d", i);
 	}
 
 	for(int i = 0; i < 10; i++)
@@ -67,9 +69,9 @@ void XLVIII()
 
 	//int abc;
 
-	// czy na funkcjê z argumentem domniemanym
+	// czy na funkcjï¿½ z argumentem domniemanym
 	
-	// mo¿na pokazaæ wskaŸnikiem void(*w)();
+	// moï¿½na pokazaï¿½ wskaï¿½nikiem void(*w)();
 
 	//void(*w)(int) = &f;
 	//w();

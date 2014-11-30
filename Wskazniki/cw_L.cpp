@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 using namespace std;
 //************************************************************************************************
 void sklej(char *t1, int size, char *t2);
@@ -9,18 +10,18 @@ char * L(char * x, int size)
 
 	char *tab = new char[size];
 
-	strcpy_s(tab, size, uwaga);
+	strncpy(tab, uwaga, size);
 
 	sklej(tab, size, x);
 
-	strcpy_s(x, size, tab);
+	strncpy(x, tab, size);
 	
 	delete [] tab;
 	
 	return x;
 }
 //************************************************************************************************
-void sklej(char *t1, int size, char *t2) // funkcja sklejaj¹ca, parametry: tablica docelowa, rozmiar tablicy docelowej, tablica Ÿród³owa
+void sklej(char *t1, int size, char *t2) // funkcja sklejajï¿½ca, parametry: tablica docelowa, rozmiar tablicy docelowej, tablica ï¿½rï¿½dï¿½owa
 {
 	int find_null = 0;
 
@@ -36,14 +37,14 @@ void sklej(char *t1, int size, char *t2) // funkcja sklejaj¹ca, parametry: tabli
 		t1[i] = t2[j];
 		if(i == (size - 1))
 		{
-			t1[i] = 0;			// jeœli skoñczy³ siê rozmiar pierwszej tablicy, a dalej mo¿na przepisywaæ, przerwij pêtle
+			t1[i] = 0;			// jeï¿½li skoï¿½czyï¿½ siï¿½ rozmiar pierwszej tablicy, a dalej moï¿½na przepisywaï¿½, przerwij pï¿½tle
 			for(int k = 0; k < 3; k++) 
 				t1[--i] = '.';
 			break;
 		}
 		else if((t1[i] == 0))
 		{
-			break;				// jeœli przepisano ca³y drugi string, a w pierwszej tablicy jest jeszcze miejsce, przerwij pêtle
+			break;				// jeï¿½li przepisano caï¿½y drugi string, a w pierwszej tablicy jest jeszcze miejsce, przerwij pï¿½tle
 		}
 	}
 

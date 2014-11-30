@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 
 using namespace std;
 //******************************************************************************************************
@@ -35,7 +36,7 @@ void porownywanie_wskaznikow()
 		cout << "Z przeprowadzonego porownania wskaznikow" << endl
 			 << "czerwonego z zielonym wynika, ze:" << endl;
 
-		// w³aœciwa akcja porównania...
+		// wï¿½aï¿½ciwa akcja porï¿½wnania...
 
 		if(wsk_czer > wsk_ziel)
 			cout << "zielony pokazuje na element blizej poczatku tablicy." << endl;
@@ -45,8 +46,8 @@ void porownywanie_wskaznikow()
 			cout << "zielony i czerwony pokazuja na to samo" << endl;
 	}
 
-	// ---------- WskaŸnik mo¿na porównaæ z adresem 0 (zero)
-	// Ka¿dy wskaŸnik mo¿e pokazywaæ na adres 0. W ten sposób zaznaczamy, ¿e wskaŸnik nie pokazuje na nic sensownego.
+	// ---------- Wskaï¿½nik moï¿½na porï¿½wnaï¿½ z adresem 0 (zero)
+	// Kaï¿½dy wskaï¿½nik moï¿½e pokazywaï¿½ na adres 0. W ten sposï¿½b zaznaczamy, ï¿½e wskaï¿½nik nie pokazuje na nic sensownego.
 
 	int *wsk = 0; // = NULL;
 

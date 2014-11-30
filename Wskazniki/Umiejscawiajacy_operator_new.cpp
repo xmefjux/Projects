@@ -4,18 +4,18 @@
 using namespace std;
 //******************************************************************************************************
 
-// Przyk³ad jak operator new mo¿e nie rezerwowaæ pamiêci, jeœli podamy mu miejsce, które nale¿y ju¿ donas - wówczas jedynie wybuduje on na danym miejscu ¿¹dany obiekt.
+// Przykï¿½ad jak operator new moï¿½e nie rezerwowaï¿½ pamiï¿½ci, jeï¿½li podamy mu miejsce, ktï¿½re naleï¿½y juï¿½ donas - wï¿½wczas jedynie wybuduje on na danym miejscu ï¿½ï¿½dany obiekt.
 
 void Umiejscawiajacy_operator_new()
 {
-	// Wstêpna rezerwacja du¿ego obszaru pamiêci (czyli kupujemy grunt na osiedle domów)
+	// Wstï¿½pna rezerwacja duï¿½ego obszaru pamiï¿½ci (czyli kupujemy grunt na osiedle domï¿½w)
 	int *osiedle = new int[5000];
-	// Niwelowanie zdobytego w³aœnie obszaru (inicjalizacja poszczególnych komórek - usuwanie œmieci)
+	// Niwelowanie zdobytego wï¿½aï¿½nie obszaru (inicjalizacja poszczegï¿½lnych komï¿½rek - usuwanie ï¿½mieci)
 	for(int i = 0; i < 5000; i++) 
 		osiedle[i] = 1;
-	// Teraz na tym terenie mo¿emy tworzyæ nowe obiekty
+	// Teraz na tym terenie moï¿½emy tworzyï¿½ nowe obiekty
 	// umieszczenie nowego obiektu
-	void *gdzie = &osiedle[100];		// wkaŸnik jest typu void, bo ma tylko pokazywaæ na dane miejsce
+	void *gdzie = &osiedle[100];		// wkaï¿½nik jest typu void, bo ma tylko pokazywaï¿½ na dane miejsce
 	int *wskint = new (gdzie) int;
 
 	// praca z tym obiektem
@@ -26,7 +26,7 @@ void Umiejscawiajacy_operator_new()
 	gdzie = &osiedle[102];
 	int *wTabi = new (gdzie) int[3];
 
-	// praca z t¹ tablic¹
+	// praca z tï¿½ tablicï¿½
 	for(int m = 0; m < 3; m++)
 	{
 		wTabi[m] = 1000 + m;
@@ -37,7 +37,7 @@ void Umiejscawiajacy_operator_new()
 	gdzie = &osiedle[106];
 	double *wTabd = new (gdzie) double[3];
 	
-	// praca z t¹ tablic¹
+	// praca z tï¿½ tablicï¿½
 	for(int n = 0; n < 3; n++)
 	{
 		wTabd[n] = 1 + (0.1 * n);
@@ -47,9 +47,9 @@ void Umiejscawiajacy_operator_new()
 
 	// w miejscu o adresie podawanym liczbowo
 	cout << "Napisz jakis adres pomiedzy: "
-		 << reinterpret_cast<int>(&osiedle[112])
+		 << reinterpret_cast<int*>(&osiedle[112])
 		 << " - "
-		 << reinterpret_cast<int>(&osiedle[116])
+		 << reinterpret_cast<int*>(&osiedle[116])
 		 << endl << "a ja tam zbuduje Ci obiekt: ";
 	int adres;
 	cin >> adres;
@@ -69,6 +69,6 @@ void Umiejscawiajacy_operator_new()
 
 	delete [] osiedle;
 
-	// po co to u¿ywaæ:
-	// Czas zu¿yty na ci¹g³e rezerwacje i zwalnianie pamiêci mo¿e byæ wtedy znacz¹cy. Lepiej wtedy zrobiæ to raz, hurtowo.
+	// po co to uï¿½ywaï¿½:
+	// Czas zuï¿½yty na ciï¿½gï¿½e rezerwacje i zwalnianie pamiï¿½ci moï¿½e byï¿½ wtedy znaczï¿½cy. Lepiej wtedy zrobiï¿½ to raz, hurtowo.
 }

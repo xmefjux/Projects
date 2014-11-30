@@ -1,7 +1,9 @@
 #include <iostream>
-//æw. XXXVII
+//ï¿½w. XXXVII
 #include <new>
-
+#include <math.h>
+#include <stdlib.h>
+//kot
 using namespace std;
 
 void Przyklad_przesuwanie_wskaznikow();
@@ -25,48 +27,48 @@ void Tablica_wskaznikow_do_funkcji();
 // zmienna globalna i
 static int i;
 
-// æw. XXIX
+// ï¿½w. XXIX
 void zerowanie(int *wsk);
-// æw. XXX
+// ï¿½w. XXX
 void dodaj(int x[], int i);
-// æw. XXXI
+// ï¿½w. XXXI
 void wypisz(const double *x, int k);
-// æw. XXXIII
+// ï¿½w. XXXIII
 void multi_tabs(double *ptr1, double *ptr2, double *ptr3, int size);
-// æw. XXXIV
+// ï¿½w. XXXIV
 double* kreator_tablicy(int size);
-// æw. XXXVII
+// ï¿½w. XXXVII
 
-// æw. XLVIII
+// ï¿½w. XLVIII
 void XLVIII();
-// æw. IL
+// ï¿½w. IL
 void * IL(char x[], double *(*y[]));
-// æw. L
+// ï¿½w. L
 char * L(char * x, int size);
-// æw. LII
+// ï¿½w. LII
 void * (*w)(char*);
-// æw. LIII
+// ï¿½w. LIII
 bool fun(bool (*wx)(double, double), char (*wy)(double));
-// æw. LIV
+// ï¿½w. LIV
 int a(); int b();  int c();
 int F(int (*w)());
-// æw. LVI
+// ï¿½w. LVI
 double * o();
-// æw. LIX
+// ï¿½w. LIX
 void u(int = 4);
-// æw. LXII
-void lxii(void (*w)(int)); // nie mo¿e mieæ wartoœci domniemanej
-// æw. LXIII
+// ï¿½w. LXII
+void lxii(void (*w)(int)); // nie moï¿½e mieï¿½ wartoï¿½ci domniemanej
+// ï¿½w. LXIII
 void LXIII();
 
 
-// WSKANIK ZAWSZE POKAZUJE NA COŒ
+// WSKAï¿½NIK ZAWSZE POKAZUJE NA COï¿½
 
 //******************************************************************************************************
-// wys³anie parametrów do funkcji
-// argc - argument counter - mówi ILE argumentów zosta³o wys³anych do programu, jest zawsze conajmniej 1 argument: nazwa programu,
-// argv - argument vector, wskaŸnik do tablicy z C-stringami: argumentami wys³anymi do funkcji
-// uruchomienie programu Wskazniki.exe param1 77.2 wyœle do programu 3 argumenty
+// wysï¿½anie parametrï¿½w do funkcji
+// argc - argument counter - mï¿½wi ILE argumentï¿½w zostaï¿½o wysï¿½anych do programu, jest zawsze conajmniej 1 argument: nazwa programu,
+// argv - argument vector, wskaï¿½nik do tablicy z C-stringami: argumentami wysï¿½anymi do funkcji
+// uruchomienie programu Wskazniki.exe param1 77.2 wyï¿½le do programu 3 argumenty
 int main(int argc, char* argv[])
 {
 	//cout << "Wydruk parametrow wywolania:" << endl;
@@ -75,7 +77,7 @@ int main(int argc, char* argv[])
 	//{
 	//	cout << "Parametr nr " << i << " to C-string: " << argv[i] << endl;
 	//}
-	///*------zamienimy C-string na liczbê-------*/
+	///*------zamienimy C-string na liczbï¿½-------*/
 	//float x;
 	//x = atof(argv[2]);
 	//x = x + 4;
@@ -99,8 +101,8 @@ int main(int argc, char* argv[])
 	//Wskazniki_do_funkcji();
 	//Cwiczenia_z_definiowania_wskaznikow_do_funkcji();
 	//Tablica_wskaznikow_do_funkcji();
-
-	//--- æw. II ---------------
+#if 0
+	//--- ï¿½w. II ---------------
 	char obj;
 	char *ptr = &obj;
 	*ptr = 'x';
@@ -111,23 +113,23 @@ int main(int argc, char* argv[])
 	char &ref = obj;
 	*ptr = ref;
 	cout << *ptr << endl;
-	// ---- æw. IX ----------
+	// ---- ï¿½w. IX ----------
 	char *wch1, *wch2;
 	double *wd;
 	wch1 = &obj;
 	wch2 = wch1;
 	wd = (double *)wch2;
 	wd = reinterpret_cast<double *>(wch2);
-	// ----- æw. X --------
+	// ----- ï¿½w. X --------
 	int *wski = reinterpret_cast<int *>(0xa2ff4);
 	cout << wski << endl;
 	wski = 0;
-	// wskaŸnik mo¿na porównaæ z adresem zerowym, nie trzeba wykonywaæ rzutowania
-	//----  æw. XII -------------
+	// wskaï¿½nik moï¿½na porï¿½wnaï¿½ z adresem zerowym, nie trzeba wykonywaï¿½ rzutowania
+	//----  ï¿½w. XII -------------
 	char cc;
 	void *wv = &cc;
 	char *wc = reinterpret_cast<char *>(wv);
-	// ------ æw. XIV -----------
+	// ------ ï¿½w. XIV -----------
 	char tab[25] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'Q', 'R', 'S', 'T', 'U', 'W', 'V', 'Z'  };
 	char *p = tab + 1; // &tab[1]
 	i = 0;
@@ -136,50 +138,50 @@ int main(int argc, char* argv[])
 		cout << *p << endl;
 		p = p + 4;
 	}
-	// ---- æw. XV, XVI -------
+	// ---- ï¿½w. XV, XVI -------
 	static char tab2[90];
 	char *xv = &tab2[25];
 	xv = xv - 30;
 	xv = xv + 6;
 	xv = xv + 100;
-	// jest mo¿liwe takie przesuniêcie, ale wskaŸnik bêdzie pokazywa³ na nie wiadomo co i to spowoduje b³¹d
-	// kompilator nie zaprotestuje, b³¹d pojawi siê kiedy bêdziemy chcieli wykorzystaæ te dane i nie bêd¹ tym czym chcieliœmy
-	// --- æw. XVII ----------------
+	// jest moï¿½liwe takie przesuniï¿½cie, ale wskaï¿½nik bï¿½dzie pokazywaï¿½ na nie wiadomo co i to spowoduje bï¿½ï¿½d
+	// kompilator nie zaprotestuje, bï¿½ï¿½d pojawi siï¿½ kiedy bï¿½dziemy chcieli wykorzystaï¿½ te dane i nie bï¿½dï¿½ tym czym chcieliï¿½my
+	// --- ï¿½w. XVII ----------------
 	char tC[10];
 	long tL[10];
 	char *pC = tC;
 	long *pL = tL;
 	pC = pC + 4;
 	pL = pL + 4;
-	// --- æw. XVIII ---------
+	// --- ï¿½w. XVIII ---------
 	int kalibracja[10];
-	// nazwa tablicy jest zarazem adresem jej zerowego elementu (pocz¹tku tablicy)
+	// nazwa tablicy jest zarazem adresem jej zerowego elementu (poczï¿½tku tablicy)
 	cout << kalibracja << endl;
-	// ----- æw. XX -------
+	// ----- ï¿½w. XX -------
 	double tabD[50];
 	double *wskA = &tabD[10];
 	double *wskB = &tabD[40];
 	cout << wskB - wskA << " " << wskA - wskB << endl;
-	// wynikiem jest liczba bêd¹ca ró¿nic¹ dwóch adresów pokazywanch elementów
-	// -------- æw. XXIX
+	// wynikiem jest liczba bï¿½dï¿½ca rï¿½nicï¿½ dwï¿½ch adresï¿½w pokazywanch elementï¿½w
+	// -------- ï¿½w. XXIX
 	int jkl[9] = { 1, 2, 3, 4, 5, 6, 7, 8 };
 	for(int i = 0; i < 8; i++) cout << jkl[i] << " ";
 	cout << endl;
 	zerowanie(jkl); zerowanie(jkl+3); zerowanie(jkl+4); zerowanie(jkl+7);
 	for(int i = 0; i < 8; i++) cout << jkl[i] << " ";
 	cout << endl;
-	// ------ æw. XXX ------------
+	// ------ ï¿½w. XXX ------------
 	static int xxx[20];
 	dodaj(xxx, 20);
 	dodaj(xxx, 5);
-	// ---- æw. XXXI -----------
+	// ---- ï¿½w. XXXI -----------
 	static const double dbl[5] = { 1.4565, 2.42, 533, 34.23453};
 	cout << dbl[0] << endl;
 	const double pi = 3.14;
 	cout << pi << endl;
 	wypisz(dbl, 5);
 	cout << sizeof(dbl) << endl;
-	// ---- æw. XXXIII, XXXIV ---------
+	// ---- ï¿½w. XXXIII, XXXIV ---------
 	/*double *tdbl1 = new double[20];
 	double *tdbl2 = new double[20];
 	double *tdbl3 = new double[20];*/
@@ -197,76 +199,77 @@ int main(int argc, char* argv[])
 	for(int i = 0; i < 20; i++) cout << *(tdbl3 + i) << " "; cout << endl;
 	
 	delete [] tdbl1; delete [] tdbl2; delete [] tdbl3;
-	// ------ æw. XXXVII
+	// ------ ï¿½w. XXXVII
 	//cout << static_cast<int>('F') << " " << static_cast<int>('A') << " " << static_cast<int>('a') << static_cast<int>('0') << endl;
 	//cout << static_cast<int>('F'-'@') << endl;
-	//-------- æw. XLIII ---------
+	//-------- ï¿½w. XLIII ---------
 	//int *const wa = new int;
 	//const int *wb = new int(8);
 	//int m = 4;
-	//wa = 10; // przede wszystkim brakuje reinterpret_cast i to jest sta³y wskaŸnik, którego nie mo¿na przesuwaæ, w dodatku do tego wskaŸnika nie wolno niczego przypisywaæ
-	//wb = 10; // brakuje reinterpret_cast, wskaŸnik do sta³ej mo¿na przesuwaæ, przypisaæ mu inny adres
-	//*wa = 10; // wskaŸnik pokazuje na jedno miejsce i mo¿na tam przypisaæ inn¹ wartoœæ
-	//*wb = 10; // wskaŸnik uwa¿a pokazywany obiekt za sta³y, nie mo¿na przypisaæ mu innej wartoœci
-	//wa = &m; // nie mo¿na przypisaæ niczego do sta³ego wskaŸnika
-	//wb = &m; // od teraz wb uwa¿a obiekt m za sta³y (mo¿e to jest ryzykowne poniewa¿ bezpowrotnie tracimy adres obiektu utworzonego operatorem new)
+	//wa = 10; // przede wszystkim brakuje reinterpret_cast i to jest staï¿½y wskaï¿½nik, ktï¿½rego nie moï¿½na przesuwaï¿½, w dodatku do tego wskaï¿½nika nie wolno niczego przypisywaï¿½
+	//wb = 10; // brakuje reinterpret_cast, wskaï¿½nik do staï¿½ej moï¿½na przesuwaï¿½, przypisaï¿½ mu inny adres
+	//*wa = 10; // wskaï¿½nik pokazuje na jedno miejsce i moï¿½na tam przypisaï¿½ innï¿½ wartoï¿½ï¿½
+	//*wb = 10; // wskaï¿½nik uwaï¿½a pokazywany obiekt za staï¿½y, nie moï¿½na przypisaï¿½ mu innej wartoï¿½ci
+	//wa = &m; // nie moï¿½na przypisaï¿½ niczego do staï¿½ego wskaï¿½nika
+	//wb = &m; // od teraz wb uwaï¿½a obiekt m za staï¿½y (moï¿½e to jest ryzykowne poniewaï¿½ bezpowrotnie tracimy adres obiektu utworzonego operatorem new)
 	//delete wa;
 	//delete wb;
-	// ---- æw. XLIV ---------
+	// ---- ï¿½w. XLIV ---------
 	//int *wsk; 
-	//*wsk = 0; // deklarujemy wskaŸnik wsk i wpisujemy do niego wartoœæ 0, jest to b³êdne poniewa¿ wskaŸnik pokazuje na niewiadome miejsce w pamiêci
-	//int *wsk = 0; // inicjalizujemy wskaŸnik adresem 0, poprawne
-	// ---- æw. XLV ----------
-	const char *wskc = "Napis"; // wskaŸnik do sta³ej typu char o wartoœci "Napis", która jest gdzieœ w pamiêci
-	// ----- æw. XLVI ----------
+	//*wsk = 0; // deklarujemy wskaï¿½nik wsk i wpisujemy do niego wartoï¿½ï¿½ 0, jest to bï¿½ï¿½dne poniewaï¿½ wskaï¿½nik pokazuje na niewiadome miejsce w pamiï¿½ci
+	//int *wsk = 0; // inicjalizujemy wskaï¿½nik adresem 0, poprawne
+	// ---- ï¿½w. XLV ----------
+	const char *wskc = "Napis"; // wskaï¿½nik do staï¿½ej typu char o wartoï¿½ci "Napis", ktï¿½ra jest gdzieï¿½ w pamiï¿½ci
+	// ----- ï¿½w. XLVI ----------
 	//int obiekt = 100;
 	//int *intw;
 	//const int *Cintw;
 	//int * const intCw = &obiekt;
 	//const int * const CintCw = &obiekt;
 
-	//intw = Cintw; // kompilator nie pozwoli na pokazywanie na obiekt, który jest uwa¿any za sta³y, przez zwyk³y wskaŸnik, odwrotnie jak najbardziej
-	//intw = intCw; // zwyk³y wskaŸnik pokazuje w to samo miejsce, co nieruchomy wskaŸnik
-	//intw = CintCw; // niejawne przypisanie zwyk³ego wskaŸnika do obiektu uwa¿anego za sta³y
-	//Cintw = intw; // od tej pory wskaŸnik do obiektu sta³ego pokazuje w to samo miejsce co zwyk³y wskaŸnik
-	//Cintw = intCw; // ta sama sytuacja co wy¿ej, przepisanie adresu nieruchomego wskaŸnika do innego wskaŸnika
-	//Cintw = CintCw; // przepisanie adresu ze sta³ego wskaŸnika do obiektu sta³ego do wskaŸnika do obiektu sta³ego
-	//CintCw = intw; // nie mo¿na przypisaæ do sta³ego wskaŸnika czegokolwiek (jedynie mo¿na go zainicjalizowaæ)
+	//intw = Cintw; // kompilator nie pozwoli na pokazywanie na obiekt, ktï¿½ry jest uwaï¿½any za staï¿½y, przez zwykï¿½y wskaï¿½nik, odwrotnie jak najbardziej
+	//intw = intCw; // zwykï¿½y wskaï¿½nik pokazuje w to samo miejsce, co nieruchomy wskaï¿½nik
+	//intw = CintCw; // niejawne przypisanie zwykï¿½ego wskaï¿½nika do obiektu uwaï¿½anego za staï¿½y
+	//Cintw = intw; // od tej pory wskaï¿½nik do obiektu staï¿½ego pokazuje w to samo miejsce co zwykï¿½y wskaï¿½nik
+	//Cintw = intCw; // ta sama sytuacja co wyï¿½ej, przepisanie adresu nieruchomego wskaï¿½nika do innego wskaï¿½nika
+	//Cintw = CintCw; // przepisanie adresu ze staï¿½ego wskaï¿½nika do obiektu staï¿½ego do wskaï¿½nika do obiektu staï¿½ego
+	//CintCw = intw; // nie moï¿½na przypisaï¿½ do staï¿½ego wskaï¿½nika czegokolwiek (jedynie moï¿½na go zainicjalizowaï¿½)
 	//CintCw = Cintw; // ------- || --------
 	//CintCw = intCw; // ------- || --------
-	// -------- æw. XLVII ------------
+	// -------- ï¿½w. XLVII ------------
 	unsigned char *uct[100];
-	// ----- æw. XLVIII --------
+	// ----- ï¿½w. XLVIII --------
 	XLVIII();
-	// ----- æw. L ----------
+	// ----- ï¿½w. L ----------
 	char napis[35] = { "jakis dlugi napis cos tam bla bla" };
 	char *wsk_do_napis = napis;
 	cout << napis << endl;
 	cout << L(wsk_do_napis, 35) << endl;
-	// ----- æw. LIV -----
+	// ----- ï¿½w. LIV -----
 	cout << F(c) << endl;
-	// ----- æw. LV
+	// ----- ï¿½w. LV
 	int (*wF)(int (*w)()) = &F;
 	//cout << F << endl;
 	cout << (*wF)(b) << endl;
-	// ----- æw. LVI ------
+	// ----- ï¿½w. LVI ------
 	double * (*wo)() = &o;
 	cout << (*wo)() << " (*wo)" << endl;
-	// ----- æw. LIX ------
-	void (*r)(int) = u; // musi byæ int w argumencie
+	// ----- ï¿½w. LIX ------
+	void (*r)(int) = u; // musi byï¿½ int w argumencie
 	(*r)(1);
 	u();
-	// ----- æw. LXIII -------
-	//LXIII();
-	// ----- æw. LXV ---------
-	cout << "Wydruk parametrow wywolania:" << endl;
+#endif
+	// ----- ï¿½w. LXIII -------
+	LXIII();
+	// ----- ï¿½w. LXV ---------
+	/*cout << "Wydruk parametrow wywolania:" << endl;
 	cout << "Parametr nr " << 0 << " to C-string: \"" << argv[0] << "\" oraz nazwa programu. " << endl;
 
 	for(int i = 1; i < argc; i++)
 	{
 		cout << "Parametr nr " << i << " to C-string: " << argv[i] << endl;
 	}
-
+	*/
 
 	system("pause");
 }
