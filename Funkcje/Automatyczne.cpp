@@ -5,7 +5,7 @@ using namespace std;
 int zwroc();
 void pisz();
 
-extern void funkcja_egipska();
+//extern void funkcja_egipska();
 
 extern int x;
 // zmienna globalna lub z przestrzeni nazw jest zawsze inicjalizowana warto�ci� zerow� (odpowiednio dla ka�dego typu)
