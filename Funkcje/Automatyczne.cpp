@@ -4,7 +4,7 @@ using namespace std;
 
 int zwroc();
 void pisz();
-
+//
 extern void funkcja_egipska();
 
 extern int x;
