@@ -8,7 +8,7 @@ void pisz();
 //extern void funkcja_egipska();
 
 extern int x;
-// zmienna globalna lub z przestrzeni nazw jest zawsze inicjalizowana warto�ci� zerow� (odpowiednio dla ka�dego typu)
+// zmienna globalna lub z przestrzeni nazw jest zawsze inicjalizowana wartością zerow� (odpowiednio dla ka�dego typu)
 // te zmienne s� zak�adane w normalnym obszarze pami�ci
 
 //****************************************************************************
