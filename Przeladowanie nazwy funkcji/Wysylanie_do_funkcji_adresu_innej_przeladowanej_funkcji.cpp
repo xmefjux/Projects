@@ -16,12 +16,15 @@ void pierwsza(void (*adrfun)(int));
 void druga(void (*adrfun)(double));
 //******************************************************************************************************
 void (*zwrot(void))(int);
+void (*zwrot1(void))(double);
+//******************************************************************************************************
 void Wysylanie_do_funkcji_adresu_innej_przeladowanej_funkcji()
 {
 	pierwsza(przelad);
 	cout << "----------------------" << endl;
 	druga(przelad);
 	pierwsza(zwrot());
+	druga(zwrot1());
 }
 //******************************************************************************************************
 void pierwsza(void (*adrfun)(int))
@@ -72,9 +75,16 @@ void przelad(double x)
  * Ciekawe jest to, że ta funkcja nie musi przyjąć jako argument funkcji, której adres ma zwrócić.
  *
  */
+//******************************************************************************************************
 void (*zwrot(void))(int)
 {
 	cout << "zwracam wskaznik do funkcji!" << endl;
 	return (&przelad);
 }
-
+//******************************************************************************************************
+void (*zwrot1(void))(double)
+{
+	cout << "zwracam wskaznik do funkcji!" << endl;
+	return (&przelad);
+}
+//******************************************************************************************************
