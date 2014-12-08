@@ -1,1 +1,0 @@
-Sizeof.d: ../Sizeof.cpp
