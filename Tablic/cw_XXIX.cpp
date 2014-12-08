@@ -247,14 +247,14 @@ void wygeneruj(char temp[][DLUGOSC_KOMBINACJI])
 
 	for(int i = 1, k = 0; i < ILOSC_WYSTAPIEN; i++, k++)
 	{
-		int licznik = 0;	// zmienna, kt�ra b�dzie indeksem dla tabeli sygna�y, zagwarantuje pobranie odpowiedniego sygna�u
+		int licznik = 0;	// zmienna, kt�ra b�dzie indeksem dla tablicy sygna�y, zagwarantuje pobranie odpowiedniego sygna�u
 		int a = i;			// zmienna do przesuwania bitowego w prawo, ma warto�� aktualnego indeksu tabeli z ilo�ciami kombinacji
 		// przesuwanie bitowe w prawo w while, przechwyci� 0 lub 1 i if'y dopisuj�ce kolejno sygna�y je�li przesuni�ty bit by� 1 (jak przechwyci� t� przesuni�t� 1)
 		// albo wczytaj najmniej znacz�cy bit (sprawd� czy 0 lub 1) i nast�pnie przesu� w prawo
 		// kombinacje[i] & 1 == 1, jaki� licznik do 4
 		while(a > 0)		// dop�ki a jest wi�ksze od 0 (po przesuwaniu w prawo)
 		{
-			if((a & CZY_OSTATNI_BIT_TO_JEDENKA) == 1)	// sprawd� czy ostatni (najmniej znacz�cy) bit jest 1 (oznacza to, �e wyst�pi� sygna�)
+			if((a & CZY_OSTATNI_BIT_TO_JEDENKA)/* == 1*/)	// sprawd� czy ostatni (najmniej znacz�cy) bit jest 1 (oznacza to, �e wyst�pi� sygna�)
 			{
 				// je�li najmniej znacz�cy bit jest 1 to wywo�aj funkcj� sklejaj�c�, w wyniku kt�rej powstan� ci�gi sygna��w (FRS, FRSGER, itd)
 				sklej(wyswietl, sizeof(wyswietl), sygnaly[licznik]);		
