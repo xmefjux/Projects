@@ -1,0 +1,149 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include "math.h"
+using namespace std;
+//************************************************************************************************************
+double ln_iter(double x, double n);
+double ln_rec(double x, double n);
+void create_file(double x, double n);
+double read_x();
+double read_n();
+double horner_iter(double x, int n);
+double horner_rec(double x, double n);
+//************************************************************************************************************
+int main()
+{
+	static double x = 0.5, n = 20;
+
+	create_file(x, n);
+
+	cout << "Obliczamy log(1 + x)." << endl << "Zmienna n okresla dokladnosc obliczen." << endl;
+
+	cout << "x = " << read_x() << ", n = " << read_n() << endl;
+
+	cout << "Wynik biblioteczny: ";
+	cout << log(1 + read_x()) << endl;
+
+	cout << "Wynik iteracyjny: ";
+	cout << ln_iter(read_x(), read_n()) << endl;
+
+	cout << "Wynik rekurencyjny: ";
+	cout << ln_rec(read_x(), read_n()) << endl;
+
+	cout << "Wynik hornera iteracyjny: ";
+	cout << horner_iter(read_x(), static_cast<int>(read_n())) << endl;
+
+	cout << "Wynik hornera rekurencyjny: ";
+	cout << horner_rec(read_x(), (read_n())) << endl;
+
+}
+//************************************************************************************************************
+double ln_iter(double x, double n)
+{
+	double loopResult = 0;
+	double tempResult = 0;
+	for(int i = 1; i <= n; i++)
+	{
+		tempResult = pow(x, i) / i;
+		
+		if(i%2 == 0) tempResult *= (-1);
+
+		loopResult += tempResult;
+		tempResult = 0;
+	}
+
+	return loopResult;
+
+}
+//************************************************************************************************************
+double ln_rec(double x, double n)
+{
+	static int recursive_step;
+	recursive_step++;
+
+	static double loopResult = 0;
+	double tempResult = 0;
+
+	tempResult = pow(x, recursive_step) / recursive_step;
+
+	if(recursive_step % 2 == 0) tempResult *= (-1);
+
+	loopResult += tempResult;
+
+	tempResult = 0;
+
+	if(n)
+	{
+		loopResult = ln_rec(x, n-1);
+	}
+
+	return loopResult;
+
+}
+//************************************************************************************************************
+double horner_iter(double x, int n)
+{
+	double w=0;
+	for(int i=n; i>0; i--){
+		w=((1/static_cast<double>(i))-w)*x;
+	}
+	return w;
+}
+//************************************************************************************************************
+double horner_rec(double x, double n)
+{
+	static int recursive_step;
+	recursive_step++;
+	double result = 0;
+	if(n){
+		result=((1/static_cast<double>(recursive_step))-horner_rec(x, n-1))*x;
+	}
+	return result;
+}
+//************************************************************************************************************
+void create_file(double x, double n)
+{
+	ifstream myfile ("zmienne.txt");
+	if (!myfile.is_open())
+	{
+		ofstream myfile;
+		myfile.open ("zmienne.txt");
+		myfile << x << " " << n;
+		myfile.close();
+	}
+
+}
+//************************************************************************************************************
+double read_x()
+{
+	double a;
+
+	ifstream myfile ("zmienne.txt");
+	if (myfile.is_open())
+	{
+		myfile >> a;
+		myfile.close();
+	}
+	else cout << "Unable to open file";
+
+	return a;
+
+}
+//************************************************************************************************************
+double read_n()
+{
+	double b;
+
+	ifstream myfile ("zmienne.txt");
+	if (myfile.is_open())
+	{
+		for(int i = 0; i < 2; i++) myfile >> b;
+		myfile.close();
+	}
+	else cout << "Unable to open file";
+
+	return b;
+
+}
+//************************************************************************************************************

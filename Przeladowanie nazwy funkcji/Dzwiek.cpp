@@ -1,20 +1,21 @@
 /*
- * Main.cpp
+ * Dzwiek.cpp
  *
- *  Created on: 6 gru 2014
+ *  Created on: 8 gru 2014
  *      Author: xmef
  */
-
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 using namespace std;
 //******************************************************************************************************
-extern void Przyklad_1();
-extern void Przeladowanie_a_zakres_waznosci();
-//******************************************************************************************************
-int main()
+void dzwiek(int a)
 {
-	//Przyklad_1();
-	Przeladowanie_a_zakres_waznosci();
+	cout << a << " nuty\n";
 }
+//******************************************************************************************************
+void dzwiek(double h)
+{
+	cout << "Dzwiek o czestotliwosci: " << h << " hercow\n";
+}
+//******************************************************************************************************
