@@ -1,0 +1,297 @@
+Kiedy kompilator napotka wywołanie przeładowanej funkcji - pracuje nad nim w kilku etapach.
+Jeśli znajdzie dokładnie jedną z wersji funkcji, która pasuje do wywołania, wtedy ją wywoła.
+W przeciwnym razie, jeśli znajdzie dwie lub więcej funkcji, które jednakowo zbliżone są do tego co umieściliśmy
+w wywołaniu funkcji, to kompilator uzna to za błąd - nie może być żadnej dwuznaczności.
+----------------------------------------------------------------------------------------------------------------------------------
+Etapy:
+1) dopasowanie dokładne,
+	a) dopasowanie dokładne z trywialną konwersją,
+2) dopasowanie na zasadzie awansowania (z awansem, z promocją),
+3) dopasowanie z użyciem konwersji standardowych,
+4) dopasowanie z użyciem konwersji wymyślonych przez programistę,
+5) dopasowanie do funkcji z wielokropkiem.
+----------------------------------------------------------------------------------------------------------------------------------
+1) Dopasowanie dokładne
+Kompilator sprawdza czy argumenty wywołania funkcji dokładnie pasują do argumentów formalnych jednej z wersji przeładowanej funkcji.
+np.
+int tablica[10];
+fun(tablica);
+pasuje dokładnie do jednej funkcji:
+void fun(int t[]);
+jeśli taka funkcja istnieje, to dopasowanie jest dokładne.
+(typ zwracany nie ma wpływu na przeładowanie)
+1a) Dopasowanie dokładne, ale z tzw. trywialną konwersją
+Np.
+int tablica[10];
+fun(tablica);
+nie znaleziono w 1 etapie funkcji:
+void fun(int t[]);
+natomiast jest funkcja:
+void fun(int *wsktab);
+Tablicę można odebrać jako tablicę albo jako wskaźnik do niej.
+Odebranie tablicy jako wskaźnika jest tzw. trywialną konwersją.
+
+Zestawienie innych konwersji uznawanych za trywialne.
+T jest symbolem jakiegoś typu.
+
+		Konwersja			|					Przykład
+	Z	 |		  Do		|	  Wywołanie funkcji		|	Jej deklaracja
+T		 |	T&				|	fun(obiekt_int);		|	fun(int& a);
+T&		 |	T				|	fun(przezwisko);		|	fun(int b);
+T[]		 |	T*				|	fun(tablica);			|	fun(int * wskaznik);
+T(argum) |	(*T)(argum)		|	fun(funkcyjka);			|	fun((*wskfun)(int));
+T		 |	const T			|	fun(5);					|	fun(const int m);
+T		 |	volatile T		|	fun(21);				|	fun(volatile int m);
+T*		 |	const T*		|	fun(wsk);				|	fun(const int *www);
+T*		 |	volatile T*		|	fun(wsk);				|	fun(volatile int * www);
+
+Etap 1) i 1a) są dopasowaniem dokładnym. Dopasowanie bez konwersji trywialnej wydaje się być dokładniejsze, ale dla kompilatora
+jest bez znaczenia. W jednym zakresie ważności nie mogą jednocześnie występować deklaracje:
+void fun(int tab[]);
+void fun(int *wsk);
+----------------------------------------------------------------------------------------------------------------------------------
+2) Dopasowanie z awansem (z promocją)
+Jakiś typ A kompilator zamienia (promuje) na typ B.
+Mówiąc ściślej:
+r-wartość (r-value) A kompilator zamienia na r-wartość typu B.
+
+-----Idea awansu jest taka, by nie powodował utraty nawet części informacji-----
+
+Droga awansu dla argumentów zmiennoprzecinkowych
+float ----> double
+czyli do większej dokładności liczb.
+
+Droga awansu dla argumentów całkowitych
+Typy char, signed char, unsigned char, short int, unsigned short int kompilator awansuje do typu int jeśli to nie powoduje utraty informacji.
+W przeciwnym razie awansuje do typu unsigned int.
+char
+signed char			|
+unsigned char		|
+short int			|
+unsigned short int  \----> int--\/
+					(a jeśli stratne)---> unsigned int
+
+Typ bool kompilator awansuje do typu int.
+bool ----> int
+
+Typ w_char i typy enum
+w_char	|
+enum	\-----> int--\/
+			(a jeśli stratne)---> unsigned int---\/
+										(a jeśli stratne)---> long---\/
+															(a jeśli stratne)---> unsigned long
+															
+Droga awansu dla pól bitowych
+Awans pola bitowego nastepuje do typu int, jeśli jest strata informacji to do typu unsigned int, a jeśli jest dalej strata, awans nie następuje.
+pola bitowe ----> int--\/
+			(a jeśli stratne)---> unsigned int---\/
+										(a jeśli stratne)---> bez awamsu!
+
+Przykład dopasowania z awansem:
+void fff(int);
+void fff(float *);
+
+char znak = 'A';
+fff(znak);
+...................
+Etap 1 	- dopasowanie dokładne: nierealne.
+Etap 1a - dokładne z trywialną konwersją: też nie wychodzi.
+Etap 2 	- awans. Argument znak kompilator awansuje do typu int. Po tym awansie wywołanie pasuje do funkcji: void fff(int);
+
+----------------------------------------------------------------------------------------------------------------------------------
+3) Próba dopasowania za pomocą konwersji standardowych
+Z dopasowaniem z użyciem konwersji standardowej związana jest utrata części informacji.
+
+Konwersja typu całkowitego
+int 		 ----> unsigned int
+unsigned int ----> int
+
+Konwersja typów zmiennoprzecinkowych
+float	----> double
+double 	----> float
+
+Konwersja między typami całkowitymi, a zmiennoprzecinkowymi
+typ zmiennoprzecinkowy	----> typ całkowity 		 (tu może wystapić utrata informacji)
+typ całkowity			----> typ zmiennoprzecinkowy (tu może wystapić utrata informacji)
+
+Konwersje arytmetyczne (które są robione automatyczne przy wykonywaniu wyrażeń arytmetycznych)
+np. mnożenie dwóch liczb - jedna long, druga short to wpierw nastąpi zamiana z short na long i wykonane mnożenie
+Takie konwersje nigdy nie powodują utraty danych
+
+Konwersje wskaźników
+- 0 (zero) może być zamienione na wskaźnik do adresu zerowego (dawniej na wskaźnik do NULL)
+- wskaźnik dowolnego nie-const i nie-volatile typu może być zamieniony na wskaźnik typu void
+- wskaźnik do klasy pochodnej może być zamieniony na wskaźnik do klasy podstawowej, od której owa klasa pochodna pochodzi
+
+Konwersja referencji
+referencja do klasy pochodnej może być zamieniona na referencję do klasy podstawowej
+
+Trzeba pamiętać o tym, że z użyciem konwersji standardowych wiąże się utrata części informacji np:
+void f(int);
+void f(char *);
+double pi = 3.14;
+f(pi); ---> wywołana wartość = 3
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+4) Próba dopasowania z użyciem konwersji zdefiniowanych przez użytkownika
+W zdefiniowanej przez siebie klasie można umieścić funkcję pokazującą, jak zamienić obiekt jakiegoś typu na obiekt typu tejże klasy.
+Jeśli argument wywołania, da się według takiej konwersji zamienić na typ odpowiadający argumentowi formalnemu, to dopasowanie jest pomyślne.
+
+Uwaga: kompilator robi tylko jedną taką konwersję.
+Nawet jeśli jest zdefiniowana konwersja z typu A na B, z B na C i z C na D to kompilator wykona tylko jedną konwersję. Nie zrobi całej kaskady.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+5) Próba dopasowania do funkcji z wielokropkiem
+Jeśli do tej pory nie udało się kompilatorowi dopasować argumentów wywołania do żadnej funkcji, to szuka on funkcji
+mającej w liście argumentów wielokropek. Wielokropek oznacza dowolna liczba argumentów dowolnego typu.
+np.
+void fun(int);
+void fun(double);
+void fun(...);
+fun("napis");
+
+"napis" jest wskaźnikiem, więc nastąpi dopasowanie do void fun(...);
+
+Pamiętajmy, że wielokropek na liście argumentów formalnych funkcji obejmuje argumenty od tej pozycji, na której stoi, oraz ewentualnie dalsze.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Wskaźników nie dopasowuje się inaczej niż dosłownie!
+
+Nigdzie nie było wzmianki o tym, że kompilator może zamienić wskaźnik jakiegoś typu. Nie bez powodu:
+- Nie można zamienić nie tylko wskaźnika np. typu char* na typ int*, ale
+- nawet wkaźnik typu T* nie można zamienić na T[] mimo, że odwrotnie jest możliwe.
+Podobnie ze wskaźnikami do funkcji.
+Jeśli argumentem wywołania jest wskaźnik do jakiejś funkcji, to kompilator dopasuje tylko funkcję, która ma dokładnie
+taki sam typ wskaźnika. Żadnych awansów, konwersji.
+
+ad 1) Jeśli jakiś wskazywany właśnie adres w pamięci ma być interpretowany jako zakodowany znak (char) to nie ma sensu
+interpretacja tak wskazywanego obszaru jako obiektu typu int. To oznaczałoby, że zaczynamy rozkodowywać bity, które
+tylko przypadkowo sąsiadują z danym znakiem char.
+ad 2) Z kolei wskaźnik typu T* nie ma pojęcia czy pokazuje na jeden "wolnostojący" obiekt, czy też może na tablicę obiektów.
+Zatem próba zamiany wskaźnika T* na tablicę T[] nie jest dopuszczalna, bo tablica powinna wiedzieć jaka jest duża.
+Wskaźnik takiej informacji nie niesie, więc kompilator nie dokona takiej konwersji.
+ad 3) Adres funkcji wywoływanej z argumentem typu char nie jest rodzajem adresu funkcji wywoływanej z argumentem typu int.
+Wzięcie adresu jednej funkcji i udawanie, że jest to adres innego typu funkcji jest już tak karkołomne, że kompilator tego
+dobrowolnie nie zrobi. (Tutaj nawet typ rezultatu tak pokazywanej funkcji musi się dokładnie zgadzać).
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Dopasowywanie wywołań z kilkoma argumentami
+Jeśli w wywołaniu funkcji jest kilka argumentów, to wówczas procedura dopasowania argumentów odbywa się na każdym z nich.
+Ze wszystkich wersji funkcji kompilator wybiera tę wersję, do której parametry pasują tak samo lub lepiej, niż do innych wersji.
+Np.
+fun(2, 5);
+deklaracje:
+fun(double, unsigned int);
+fun(double, double);
+fun(int*, double);
+
+Ostatnia wersja od razu odpada. Nie da się konwersjami standardowymi zamienić liczby 2 na wskaźnik int*.
+Przy pierwszym argumencie pozostałe dwie funkcje pasują tak samo, przy drugim funkcja z unsigned int pasuje lepiej od tej z double.
+Ponieważ int -> unsigned int jest tylko awansem, a nie int -> double konwersją.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
