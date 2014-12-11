@@ -7,6 +7,9 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+extern "C" {
+#include "x.h"
+}
 using namespace std;
 //******************************************************************************************************
 void wypisz(int liczba);
