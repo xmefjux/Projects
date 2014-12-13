@@ -1,0 +1,45 @@
+Kolekcje standardowe w C++
+1. 	vector<T>					Wektor zmiennej długość
+2. 	list<T>						Lista dwukierunkowa
+3. 	queue<T>					Kolejka
+4. 	stack<T>					Stos
+5. 	deque<T>					Kolejka o dwóch końcach
+6. 	priority_queue<T>			Kolejka posortowana według wartości
+7. 	set<T>						Zbiór
+8. 	multiset<T>					Zbiór, w którym wartość może występować wielokrotnie
+9. 	map<klucz, wartość> 		Tablica asocjacyjna
+10. multimap<klucz, wartość> 	Słownik, w którym klucz może występować wielokrotnie
+
+wyjście (cout) jest tak naprawdę kolekcją z prawem tylko do pisania
+wejście (cin) jest tak naprawdę kolekcją z prawem tylko do czytania
+
+Wybrane algorytmy standardowe w C++ (z biblioteki <algorithm>)
+1. 	for_each()					Wywołuj funkcję dla każdego elementu
+2. 	find()						Znajdź pierwsze wystąpienie argumentów
+3. 	find_if()					Znajdź pierwszy element spełniający predykat
+4. 	count()						Policz wystąpienia elementu
+5. 	count_if()					Policz wystąpienia elementów spełniających predykat
+6. 	replace()					Zastąp element nową wartością
+7. 	replace_if()				Zastąp element spełniający predykat nową wartością
+8. 	copy()						Kopiuj elementy
+9. 	unique_copy()				Kopiuj elementy nie będące duplikatami
+10. sort()						Sortuj elementy
+11. equal_range()				Znajdź wszystkie elementy z równoważnymi wartościami
+12. merge()						Scal posortowane ciągi
+
+Te algorytmy i wiele innych można stosować do elementów kolekcji, napisów i tablic wbudowanych.
+
+
+							RADY PRAKTYCZNE
+[1]  Nie wymyślaj na nowo koła; używaj bibliotek.
+[2]  Nie wierz w magię; musisz rozumieć, co można uzyskać z bibliotek, w jaki sposób i jakim kosztem.
+[3]  Jeśli masz wybór, to przedkładaj bibliotekę standardową nad inne biblioteki.
+[4]  Nie myśl, że biblioteka standardowa jest lekarstwem na wszystko.
+[5]  Pamiętaj o włączaniu nagłówków (#include) stosowanych przez Ciebie udogodnień.
+[6]  Pamiętaj, że udogodnienia biblioteki standardowej są zdefiniowane w przestrzeni nazw std.
+[7]  Używaj raczej typu string niż char*.
+[8]  Jeśli masz wątpliwości, to używaj wektora z kontrolą zakresu (takiego jak Vec).
+[9]  Przedkładaj vector<T>, list<T> i map<klucz, wartość> nad T[].
+[10] Do wkładania elementów do kolekcji używaj push_back() lub back_inserter().
+[11] Używaj raczej push_back() w odniesieniu do wektora niż realloc() w odniesieniu do tablicy.
+[12] Popularne wyjątki wyłapuj w programie głównym.
