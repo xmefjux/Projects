@@ -1,0 +1,32 @@
+Specyfikator to słowo kluczowe, takie jak virtual i extern, które pojawia się na początku i określa pewien inny typ
+niż typ atrybut deklarowanego elementu.
+
+Obiekty zadeklarowany wewnątrz funkcji jest tworzony w chwili napotkania definicji i niszczony, gdy jego nazwa opuszcza zasięg,
+jeżeli programista nie zażąda czegoś innego. Obiekty takie nazywamy automatycznymi.
+Obiekty zadeklarowane w zasięgu globalnym lub w przestrzeni nazw i obiekty zadeklarowane jako static w funkcjach i klasach
+są tworzone i inicjowane (tylko) raz i żyją do zakończenia działania programu. Obiekty takie nazywamy statycznymi.
+Czas życia elementów tablicy oraz niestatycznych składowych struktury i klasy zależy od czasu życia obiektu, do którego należą.
+
+			Rady praktyczne
+1		Pilnuj, aby zasięgi były małe
+2		Nie używaj tej samej nazwy w zasięgu i zasięgu otaczającym
+3		W jednej deklaracji wprowadzaj (tylko) jedną nazwę
+4		Pilnuj, aby popularne i lokalne nazwy były krótkie oraz aby rzadkie i nielokalne - dłuższe
+5		Unikaj podobnych nazw
+6		Stosuj zgodny styl nazewnictwa
+7		Dobiera nazwy starannie, tak aby raczej odzwierciedały znaczenie, a nie implementację
+8		Używaj typedef do definiowania znaczącej nazwy dla typu wbudowanego wówczas,
+		gdy typ wbudowany użyty do reprezentowania pewnej wartości może ulec zmianie
+9		Używaj typedef do definiowania synonimów typów; używaj wyliczeń i klas do definiowania nowych typów
+10		Pamiętaj, że każda deklaracja musi podać typ (nie ma niejawnego int)
+11		Unikaj niepotrzebnych założeń o wartości numerycznej znaków
+12		Unikaj niepotrzebnych założeń o rozmiarze liczb całkowitych
+13		Unikaj niepotrzebnych założeń o zakresie typów zmiennoprzecinkowych
+14		Przedkładaj zwykły int nad short int i long int
+15		Przedkładaj double nad float i long double
+16		Przedkładaj zwykły char nad signed char i unsigned char
+17		Unikaj niepotrzebnych założeń o rozmiarze obiektów
+18		Unikaj arytmetyki bez znaku
+19		Konwersje z signed do unsigned i z unsigned do signed traktuj podejrzliwie
+20		Konwersje liczb zmiennoprzecinkowych do całkowitych traktuj podejrzliwie
+21		Konwersje do mniejszego typu, takie jak z int do char traktuj podejrzliwie		
