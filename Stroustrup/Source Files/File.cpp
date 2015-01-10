@@ -14,8 +14,6 @@
 #include <algorithm>
 using namespace std;
 //******************************************************************************************************
-double& wartosc(const string& s);
-//******************************************************************************************************
 template <class C, class T> int count (const C& v, T val)
 {
 	typename C::const_iterator i = find(v.begin(), v.end(), val);
