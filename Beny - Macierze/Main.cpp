@@ -18,7 +18,8 @@ int main()
 {
 	// sprawdź czy zmienna mniejsza od L, jeśli równa to zwiększ indeks o L
 	// wykonuj mnożenia od 0 do N - (i + 1)
-
+// -------------------------------------------------------------------------------------------------------------------------
+	// deklaracje zmiennych
 	static int N; 				// zmienna N, rozmiar macierzy A
 	static int L; 				// zmienna L, co ile kolumn są "zera"
 	int *A;						// wskaźnik na obszar z macierzą A
@@ -27,7 +28,8 @@ int main()
 	static int multi;			// zmienna na liczbę mnożeń
 	static int index;			// zmienna na indeks macierzy, ponieważ tablica 2-wymiarowa jest przechowywana jako 1-wymiarowa
 	static int jump;			// zmienna pomocnicza, do przeskakiwania "zer" w macierzy
-
+// -------------------------------------------------------------------------------------------------------------------------
+	// pobieranie danych z pliku
 	ifstream myfile ("dane.txt");
 	if(myfile.is_open())
 	{
@@ -46,7 +48,8 @@ int main()
 		}
 	}
 	myfile.close();
-
+// -------------------------------------------------------------------------------------------------------------------------
+	// wykonywanie mnożeń
 	for(int i = 0; i < N; i++)
 	{
 		for(int j = 0; j < (N - (i + 1));) // warunek N - (i + 1) - pomijamy zera, wynikające z macierzy trójkątnej
@@ -71,11 +74,11 @@ int main()
 		jump = 0;
 		index = (i+1) * N;
 	}
-
+// -------------------------------------------------------------------------------------------------------------------------
 	// zapis wyniku mnożenia macierzy przez wektor do pliku
 	//cout << "Liczba mnozen >>" << multi << "<<" << endl;
 	write_result(result, N, multi);
-
+// -------------------------------------------------------------------------------------------------------------------------
 	// niszczenie zarezerwowanych obszarów pamięci
 	delete [] A;
 	delete [] W;
@@ -85,6 +88,7 @@ int main()
 //************************************************************************************************************
 void write_result(int* result, int N, int multi)
 {
+	// zapisanie wyniku mnożenia do pliku
 	ofstream myfile;
 	myfile.open ("wynik.txt");
 	for(int i = 0; i < N; i++)
