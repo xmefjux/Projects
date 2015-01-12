@@ -12,7 +12,7 @@
 #include <vector>
 using namespace std;
 //************************************************************************************************************
-void write_result(int* result, int N, int multi);
+void write_result(int* result, int N, int multi); // funkcja zapisująca wynik mnożenia do pliku
 //************************************************************************************************************
 int main()
 {
@@ -72,8 +72,14 @@ int main()
 		index = (i+1) * N;
 	}
 
+	// zapis wyniku mnożenia macierzy przez wektor do pliku
 	//cout << "Liczba mnozen >>" << multi << "<<" << endl;
 	write_result(result, N, multi);
+
+	// niszczenie zarezerwowanych obszarów pamięci
+	delete [] A;
+	delete [] W;
+	delete [] result;
 
 }
 //************************************************************************************************************
