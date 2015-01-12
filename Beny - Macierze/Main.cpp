@@ -49,6 +49,12 @@ int main()
 	}
 	myfile.close();
 // -------------------------------------------------------------------------------------------------------------------------
+	// nadanie wartości początkowych obszarowi z tablicą wynikową - by uniknąć ewentualnego wyświetlenia śmieci
+	for(int i = 0; i < N; i++)
+	{
+		result[i] = 0;
+	}
+// -------------------------------------------------------------------------------------------------------------------------
 	// wykonywanie mnożeń
 	for(int i = 0; i < N; i++)
 	{
