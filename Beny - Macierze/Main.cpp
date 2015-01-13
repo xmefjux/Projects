@@ -17,7 +17,7 @@ void write_result(int* result, int N, int multi); // funkcja zapisująca wynik m
 int main()
 {
 	// sprawdź czy zmienna mniejsza od L, jeśli równa to zwiększ indeks o L
-	// wykonuj mnożenia od 0 do N - (i + 1)
+	// wykonuj mnożenia od 0 do N - i
 // -------------------------------------------------------------------------------------------------------------------------
 	// deklaracje zmiennych
 	static int N; 				// zmienna N, rozmiar macierzy A
@@ -58,7 +58,7 @@ int main()
 	// wykonywanie mnożeń
 	for(int i = 0; i < N; i++)
 	{
-		for(int j = 0; j < (N - (i + 1));) // warunek N - (i + 1) - pomijamy zera, wynikające z macierzy trójkątnej
+		for(int j = 0; j < (N - i);) // warunek N - i - pomijamy zera, wynikające z macierzy trójkątnej
 		{
 			if(jump < L) // w tym miejscu wykonuj mnozenia jeśli jump < L, czyli w miejscach niezerowych
 			{
