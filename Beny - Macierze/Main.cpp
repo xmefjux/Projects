@@ -6,10 +6,7 @@
  */
 #include <iostream>
 #include <fstream>
-#include <string>
-#include "math.h"
 #include <stdlib.h>
-#include <vector>
 using namespace std;
 //************************************************************************************************************
 void write_result(int* result, int N, int multi); // funkcja zapisująca wynik mnożenia do pliku
