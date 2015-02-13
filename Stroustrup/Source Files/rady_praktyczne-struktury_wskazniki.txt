@@ -1,0 +1,8 @@
+1 Unikaj somplikowanej arytmetyki na wskaźnikach
+2 Uważaj, aby nie przekraczać zakresu tablicy
+3 Raczej używaj 0, niż NULL
+4 Raczej używaj vector i valarray, niż wbudowanych tablic
+5 Raczej używaj typu string, niż zakończonej zerem tablicy znaków
+6 Staraj się jak najrzadziej używać zwykłych referencji jako argumentów
+7 Unikaj używania void* poza kodem niskopoziomowym
+8 Unikaj umieszczania w kodzie skomplikowanych literałów (magicznych liczb). Raczej definiuj i używaj stałych symbolicznych.
