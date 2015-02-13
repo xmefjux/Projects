@@ -19,9 +19,9 @@ int main()
 	// deklaracje zmiennych
 	static int N; 				// zmienna N, rozmiar macierzy A
 	static int L; 				// zmienna L, co ile kolumn są "zera"
-	int *A;						// wskaźnik na obszar z macierzą A
-	int *W;						// wskaźnik na obszar z wektorem W
-	int *result;				// wskaźnik na obszar z macierzą wynikową
+	int *A = 0;						// wskaźnik na obszar z macierzą A
+	int *W = 0;						// wskaźnik na obszar z wektorem W
+	int *result = 0;				// wskaźnik na obszar z macierzą wynikową
 	static int multi;			// zmienna na liczbę mnożeń
 	static int index;			// zmienna na indeks macierzy, ponieważ tablica 2-wymiarowa jest przechowywana jako 1-wymiarowa
 	static int jump;			// zmienna pomocnicza, do przeskakiwania "zer" w macierzy
