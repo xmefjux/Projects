@@ -17,4 +17,6 @@ int main()
 {
 	//Przyklady();
 	pierwszy();
+
+	system("pause");
 }
