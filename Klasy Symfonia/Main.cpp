@@ -12,9 +12,15 @@ using namespace std;
 //***************************************************************************************
 extern void Przyklady();
 extern void pierwszy();
+extern void numer_main();
+extern void gadula_main();
+extern void pion_main();
 //***************************************************************************************
 int main()
 {
 	//Przyklady();
-	pierwszy();
+	//pierwszy();
+	//numer_main();
+	//gadula_main();
+	pion_main();
 }
