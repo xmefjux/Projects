@@ -12,6 +12,9 @@ using namespace std;
 
 #include "pion.h"
 
+// składnik statyczny może pojawiać się jako argument domniemany jakiejś funkcji składowej tej klasy. Składnik nie-statyczny nie mógłby
+// Klasy które są definiowane lokalnie (czyli np w obrębie jednej funkcji) - nie mogą mieć danych statycznych
+
 void pion_main()
 {
 	cout << "Poczatek programu, teraz jest pionkow = " << pion::ile_pionkow;
@@ -24,7 +27,7 @@ void pion_main()
 	// odczytywanie informacji zapisanych w danej statycznej (public)
 
 	cout << "Klasa mowi ze pionkow jest " << pion::ile_pionkow << endl;
-	cout << "czerwony, ze" << czerwony.ile_pionkow << endl;
+	cout << "czerwony, ze " << czerwony.ile_pionkow << endl;
 	cout << "zielony, ze " << zielony.ile_pionkow << endl;
 
 	pion bialy;

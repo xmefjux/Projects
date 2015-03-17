@@ -33,7 +33,7 @@ const char* bilet::opis_rodzaju()
 {
 
 	const char* nazwy[] = {
-			"osobowy (lub regionalny",
+			"osobowy (lub regionalny)",
 			"przyspieszony (lekko)",
 			"pospieszny",
 			"InterCity ekspres"
