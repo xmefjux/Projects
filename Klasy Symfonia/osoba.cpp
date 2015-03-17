@@ -11,7 +11,7 @@ extern void zapis_osoby_na_wakacje(const osoba *jej_adres);
 //*****************************************************************************************
 void osoba::zapamietaj(const char *napis, int lata)
 {
-	strcpy_s(this->nazwisko, (napis ? napis : "Anonim"));
+	strcpy(this->nazwisko, (napis ? napis : "Anonim"));
 	this->wiek = lata;
 }
 //*****************************************************************************************

@@ -11,8 +11,8 @@ using namespace std;
 //*****************************************************************************************
 void bilet::zapamietaj(const char* sk, const char* dok, rodzaj_pociagu poc, int kl)
 {
-	strcpy_s(this->skad, (sk ? sk : "Brak danych"));
-	strcpy_s(this->dokad, (dok ? dok : "Brak danych"));
+	strcpy(this->skad, (sk ? sk : "Brak danych"));
+	strcpy(this->dokad, (dok ? dok : "Brak danych"));
 	this->jaki_pociag = poc;
 	this->klasa = kl;
 }
