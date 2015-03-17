@@ -19,8 +19,14 @@ extern void pion_main();
 int main()
 {
 	//Przyklady();
+<<<<<<< HEAD
 	//pierwszy();
 	//numer_main();
 	//gadula_main();
 	pion_main();
+=======
+	pierwszy();
+
+	system("pause");
+>>>>>>> af73ee098b2c6533c9ea42094729e70ecf6e8298
 }

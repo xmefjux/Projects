@@ -10,7 +10,7 @@ using namespace std;
 #include "osoba.h"
 #include "bilet.h"
 //*****************************************************************************************
-void prezentacja(osoba);
+void prezentacja(osoba &ktos);
 extern void funkcja_w_innym_pliku();
 //*****************************************************************************************
 void pierwszy()
@@ -43,7 +43,7 @@ void pierwszy()
 	funkcja_w_innym_pliku();
 }
 //*****************************************************************************************
-void prezentacja(osoba ktos)
+void prezentacja(osoba &ktos)
 {
 	cout << "Mam zaszczyt przedstawic panstwu, \nOto we wlasnej osobie: ";
 	ktos.wypisz();
