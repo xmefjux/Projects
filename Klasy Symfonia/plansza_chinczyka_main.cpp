@@ -7,8 +7,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
-#include <cstring>
-using namespace std;
+#include "includy.h"
 #include "planszachinczyka.h"
 //***************************************************************************************
 void wydrukuj_z_referencji(const int &ref)

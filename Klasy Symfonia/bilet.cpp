@@ -5,9 +5,7 @@
  *      Author: xmef
  */
 #include "bilet.h"
-#include  <iostream>
-using namespace std;
-#include <cstring>
+#include "includy.h"
 //*****************************************************************************************
 void bilet::zapamietaj(const char* sk, const char* dok, rodzaj_pociagu poc, int kl)
 {

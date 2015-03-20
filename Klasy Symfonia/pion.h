@@ -8,11 +8,7 @@
 #ifndef PION_H_
 #define PION_H_
 
-#include <iostream>
-#include <stdio.h>
-#include <string.h>
-#include <cstring>
-using namespace std;
+#include "includy.h"
 
 class pion {
 private:

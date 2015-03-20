@@ -4,13 +4,8 @@
  *  Created on: 20 lut 2015
  *      Author: xmef
  */
-#include <iostream>
-#include <stdio.h>
-#include <string.h>
-#include <cstring>
+#include "includy.h"
 #include "osoba.h"
-
-using namespace std;
 
 // dane w klasie są w kolejności public, protected, private
 // protected - dostęp ma klasa oraz klasy, które dziedziczą

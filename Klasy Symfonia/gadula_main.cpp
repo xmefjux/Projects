@@ -4,11 +4,7 @@
  *  Created on: 17 mar 2015
  *      Author: xmef
  */
-#include <iostream>
-#include <stdio.h>
-#include <string.h>
-#include <cstring>
-using namespace std;
+#include "includy.h"
 
 #include "gadula.h"
 
@@ -19,7 +15,7 @@ using namespace std;
 // np. jeśli obiekt w czasie swojego istnienia dokonał jakiejś rezerwacji pamięci to należy tą pamięć zwolnić, najlepiej w destruktorze
 
 
-/*gadula a(1, "obiekt a (GLOBALNY)");
+gadula a(1, "obiekt a (GLOBALNY)");
 gadula b(2, "obiekt b (GLOBALNY)");
 
 void gadula_main()
@@ -46,4 +42,4 @@ void gadula_main()
 	cout << "Sam uruchamiam destruktor obiektu a\n";
 	a.~gadula();
 	cout << "Koniec programu\n";
-}*/
+}

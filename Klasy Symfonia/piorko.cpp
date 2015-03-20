@@ -18,6 +18,20 @@
 
 // funkcje statyczną można wywołać nawet wtedy gdy nie istnieje żaden obiekt danej klasy
 
+// funkcja statyczna to tak jakby zwykła funkcja (nie trzeba jej wywoływać na rzecz obiektu), ale ma zakres ważności klasy,
+// więc ma dostęp do jej prywatnych składników
+
+/*
+ * do czego może się przydać składnik statyczny w klasie
+ * - przydaje się, gdy egzemplarze obiektów danej klasy mają porozumiewać się ze sobą
+ * - gdy wszystkie obiekty mają tę samą cechę, która może się zmieniać
+ * - może to być zmienna określająca ile obiektów danej klasy już istnieje
+ * - może też służyć do tego, żeby wszystkie obiekty danej klasy mogły korzystać z jednego pliku dyskowego
+ *   składnim statycznym jest wtedy kanał transmisji (strumień) do pliku
+ * - składnik statyczny może zaoszczędzić miejsca, jedna cecha wspólna dla wszystkich obiektów w pamięci wystąpi tylko raz
+ *
+ */
+
 int piorko::zezwolenie;
 
 piorko::piorko(const char* kol) {

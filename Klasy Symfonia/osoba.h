@@ -8,8 +8,7 @@
 #ifndef OSOBA_H_
 #define OSOBA_H_
 //*****************************************************************************************
-#include <iostream>
-using namespace std;
+#include "includy.h"
 //*****************************************************************************************
 // definicja klasy
 class osoba

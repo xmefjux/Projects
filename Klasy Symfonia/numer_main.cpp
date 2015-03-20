@@ -4,11 +4,7 @@
  *  Created on: 17 mar 2015
  *      Author: xmef
  */
-#include <iostream>
-#include <stdio.h>
-#include <string.h>
-#include <cstring>
-using namespace std;
+#include "includy.h"
 
 #include "numer.h"
 

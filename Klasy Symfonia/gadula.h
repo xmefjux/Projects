@@ -8,9 +8,7 @@
 #ifndef GADULA_H_
 #define GADULA_H_
 
-#include <cstring>
-#include <iostream>
-using namespace std;
+#include "includy.h"
 
 // przykładowa klasa z użyciem destruktora
 // tak samo jak konstruktor, destruktor jest wywoływany zawsze, automatycznie, tuż przed zniszczeniem obiektu
@@ -23,6 +21,9 @@ class gadula {
 public:
 	gadula(int k, const char* opis);
 	~gadula(void);
+
+	void fff(int);
+	void fff(int, int);
 
 	int zwracaj() { return licz; }
 	void schowaj(int x) {licz = x; }

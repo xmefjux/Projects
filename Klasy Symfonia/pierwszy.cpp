@@ -4,8 +4,7 @@
  *  Created on: 24 lut 2015
  *      Author: xmef
  */
-#include <iostream>
-using namespace std;
+#include "includy.h"
 
 #include "osoba.h"
 #include "bilet.h"

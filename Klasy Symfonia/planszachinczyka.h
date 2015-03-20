@@ -8,8 +8,7 @@
 #ifndef PLANSZACHINCZYKA_H_
 #define PLANSZACHINCZYKA_H_
 
-#include <iostream>
-using namespace std;
+#include "includy.h"
 
 // aby zainicjalizować składnik klasy wewnątrz definicji klasy musi on być: statyczny, stały (const) i typu całkowitego
 // a jego inicjalizator musi być wyrażeniem stałym

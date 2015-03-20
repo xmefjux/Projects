@@ -8,9 +8,7 @@
 #ifndef NUMER_H_
 #define NUMER_H_
 
-#include <cstring>
-#include <iostream>
-using namespace std;
+#include "includy.h"
 
 // przykładowa klasa z użyciem konstruktora
 // konstruktor jest to funkcja składowa klasy, która nie ma żadnego typu zwracanego i taką samą nazwę jak klasa

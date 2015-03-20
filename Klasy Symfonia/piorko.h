@@ -8,9 +8,7 @@
 #ifndef PIORKO_H_
 #define PIORKO_H_
 
-#include <cstring>
-#include <iostream>
-using namespace std;
+#include "includy.h"
 
 enum tak_czy_nie { nie, tak };
 

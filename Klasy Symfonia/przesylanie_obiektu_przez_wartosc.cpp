@@ -1,12 +1,10 @@
-#include <iostream>
-using namespace std;
-#include "osoba.h"
+#include "includy.h"
 //*****************************************************************************************
 void obiekt_przez_wartosc()
 {
 	//osoba kompozytor;
 	//osoba autor;
-	// nie zaleca siê wysy³ac obiekty do funkcji przez wartoœæ
-	// w³aœnie z myœl¹ o obiektach zosta³a wymyœlona referencja
+	// nie zaleca siï¿½ wysyï¿½ac obiekty do funkcji przez wartoï¿½ï¿½
+	// wï¿½aï¿½nie z myï¿½lï¿½ o obiektach zostaï¿½a wymyï¿½lona referencja
 }
 //*****************************************************************************************
