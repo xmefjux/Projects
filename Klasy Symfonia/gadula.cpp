@@ -9,6 +9,8 @@
 
 int licz;
 
+const int gadula::zmienna;
+
 void fff(int, int, int) { cout << "funkcja glob\n"; }
 
 gadula::gadula(int k, const char* opis) {
@@ -21,6 +23,7 @@ gadula::gadula(int k, const char* opis) {
 	gadula::fff(1, 2);
 	//fff(1, 2, 3); // domyślnie przed tym stoi gadula::
 	// dlatego zalecane jest by zawsze to pisać, bo może to być mylące
+	cout << "zmienna = " << zmienna << ", adres = " << &zmienna << endl;
 }
 
 gadula::~gadula() {

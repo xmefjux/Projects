@@ -28,6 +28,8 @@ public:
 	int zwracaj() { return licz; }
 	void schowaj(int x) {licz = x; }
 	void coto() { cout << tekst << " ma wartosc " << licz << endl; }
+
+	static const int zmienna = 5;
 };
 
 #endif /* GADULA_H_ */
